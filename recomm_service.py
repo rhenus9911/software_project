@@ -24,8 +24,8 @@ total_sales = pd.read_csv(f"{dir}/total_sales.csv")
 
 def similarity(dong):
   code_table = pd.DataFrame(total_sales['행정코드'].unique(), index=total_sales['행정동명'].unique(), columns=['상권코드'])
-  oodCode_table = pd.DataFrame(total_food['상권업종소분류코드'].unique(), index=total_food['상권업종소분류명'].unique(), columns=['분류코드'])
-  d_code = int(code_table.loc[dong])
+  foodCode_table = pd.DataFrame(total_food['상권업종소분류코드'].unique(), index=total_food['상권업종소분류명'].unique(), columns=['분류코드'])
+  d_code = int(code_table.loc[dong].iloc[0])
   # 행정코드에 대한 상권분류
 
   dong_food = total_food[total_food['행정코드'] == d_code]
