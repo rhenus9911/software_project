@@ -3,14 +3,18 @@ import matplotlib.pyplot as plt
 import seaborn as sb
 import os
 import time
+import matplotlib.font_manager as fm
 from recomm_service import similarity
+
+fe = fm.FontEntry(fname='/usr/share/fonts/NanumFont/NanumGothic.ttf', name='NanumGothic')
+fm.fontManager.ttflist.insert(0, fe) 
+plt.rcParams.update({'font.size': 10, 'font.family': 'NanumGothic'}) # 폰트 설정
 
 def table_info(dong):
     sales_dict, den_dict = similarity(dong)
     sales_rank = pd.DataFrame(sales_dict.items(), columns = ['업종명', '당월매출금액'])
     colors = sb.color_palette('hls', len(sales_rank['업종명']))
     sales_rank.plot(kind = 'bar', x = '업종명', y = '당월매출금액', color = colors, edgecolor='black')
-    plt.rcParams.update({'font.size': 10, 'font.family': 'NanumGothic'}) 
     plt.title('업종별 상위 매출 Top 5')
     plt.xticks(rotation = 0) # x 축에 표시되는 업종명이 세로로 90도 틀어져 표시되어 0도로 재조정
 
@@ -18,13 +22,13 @@ def table_info(dong):
 #     기존에 저장된 이미지가 있을 경우, 웹에서 old 이미지를 로드하는 문제 때문에
 #     파일명에 시간을 추가하여 중복을 제거
 #=============================================================================
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    BASE_DIR = os.path.dirname(os.path.realpath(__file__))
     sales_img = "sales_rank_" + str(time.time()) + ".png"
-    for filename in os.listdir('static/images'):
+    for filename in os.listdir(BASE_DIR + '/static/images'):
         if filename.startswith('sales_rank_'):
-            os.remove('static/images/' + filename)
+            os.remove(BASE_DIR + '/static/images/' + filename)
 
-    plt.savefig(BASE_DIR + '/WebPage/static/images/' + sales_img)
+    plt.savefig(BASE_DIR + '/static/images/' + sales_img)
 
     density_rank = pd.DataFrame(den_dict.items(), columns = ['업종명', '당월매출금액'])
     density_rank.plot(kind = 'bar', x = '업종명', y = '당월매출금액', color = colors, edgecolor='black')
@@ -32,11 +36,11 @@ def table_info(dong):
     plt.xticks(rotation = 0)
 
     density_img = "density_rank_" + str(time.time()) + ".png"
-    for filename in os.listdir('static/images'):
+    for filename in os.listdir(BASE_DIR + '/static/images'):
         if filename.startswith('density_rank_'):
-            os.remove('static/images/' + filename)
+            os.remove(BASE_DIR + '/static/images/' + filename)
 
-    plt.savefig(BASE_DIR + '/WebPage/static/images/' + density_img)
+    plt.savefig(BASE_DIR + '/static/images/' + density_img)
 
     trans_sales = {}
     trans_den = {}

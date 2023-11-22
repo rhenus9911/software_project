@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Report</title>
+    </head>
+    <body>
+        <table style="border-collapse: collapse; width: 80%; height: 100%;" border="1">
+            <tbody>
+                <tr>
+                    <td style="width: 10%; text-align: center;"><strong>업종 - 매출액</strong></td>
+                    <td style="width: 10%; text-align: center;"><strong>평균 매출 금액(단위: 원)</strong></td>
+                    <td style="width: 10%; text-align: center;" rowspan="6">
+                        <img src="{{url_for ('static' , filename='images/'+graph1)}}" width="650px" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table style="border-collapse: collapse; width: 80%; height: 100%;" border="1">
+            <tbody>
+                <tr>
+                    <td style="width: 10%; text-align: center;"><strong>업종 - 밀집도</strong></td>
+                    <td style="width: 10%; text-align: center;"><strong>평균 매출 금액(단위: 원)</strong></td>
+                    <td style="width: 10%; text-align: center;" rowspan="6">
+                        <img src="{{url_for ('static' , filename='images/'+graph2)}}" width="650px" />
+                    </td>
+        
+                    <td style="width: auto; text-align: center; height: auto;" id="roadview" rowspan="6"></td>
+        
+                </tr>
+                    {% for a, b in den_dict.items() %}
+                <tr>
+                    <td style="width: 10%; text-align: center;">{{a}}</td>
+                    <td style="width: 10%; text-align: center;">{{b}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
