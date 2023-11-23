@@ -4,14 +4,14 @@ import seaborn as sb
 import os
 import time
 import matplotlib.font_manager as fm
-from recomm_service import similarity
+from recomm_service import recommService
 
 fe = fm.FontEntry(fname='/usr/share/fonts/NanumFont/NanumGothic.ttf', name='NanumGothic')
 fm.fontManager.ttflist.insert(0, fe) 
 plt.rcParams.update({'font.size': 10, 'font.family': 'NanumGothic'}) # 폰트 설정
 
 def table_info(dong):
-    sales_dict, den_dict = similarity(dong)
+    sales_dict, den_dict = recommService(dong)
     sales_rank = pd.DataFrame(sales_dict.items(), columns = ['업종명', '당월매출금액'])
     colors = sb.color_palette('hls', len(sales_rank['업종명']))
     sales_rank.plot(kind = 'bar', x = '업종명', y = '당월매출금액', color = colors, edgecolor='black')

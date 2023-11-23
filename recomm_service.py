@@ -22,12 +22,12 @@ total_sales = pd.read_csv(f"{dir}/total_sales.csv")
 
 # 입력한 행정동별 요식업 분류
 
-def similarity(dong):
+def recommService(dong):
   code_table = pd.DataFrame(total_sales['행정코드'].unique(), index=total_sales['행정동명'].unique(), columns=['상권코드'])
   foodCode_table = pd.DataFrame(total_food['상권업종소분류코드'].unique(), index=total_food['상권업종소분류명'].unique(), columns=['분류코드'])
   d_code = int(code_table.loc[dong].iloc[0])
+ 
   # 행정코드에 대한 상권분류
-
   dong_food = total_food[total_food['행정코드'] == d_code]
   dong_food = dong_food.reset_index(drop=True)
 
@@ -162,7 +162,6 @@ def similarity(dong):
 
       position_sales_dict = dict([(x, int(y)) for x, y in zip(sales['상권업종소분류코드'], sales['매출'])])
       sales_dict = merge_two_dicts(sales_dict, position_sales_dict)
-      # print(sales_dict)
 
   den_dict = {}  # 밀집도 top5 결과 dict
   for i in den:
