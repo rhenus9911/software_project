@@ -15,6 +15,11 @@
                         <img src="{{url_for ('static' , filename='images/'+graph1)}}" width="650px" />
                     </td>
                 </tr>
+                    {% for a, b in sales_dict.items() %}
+                <tr>
+                    <td style="width: 10%; text-align: center;">{{a}}</td>
+                    <td style="width: 10%; text-align: center;">{{b}}</td>
+                    {% endfor %}
             </tbody>
         </table>
         
