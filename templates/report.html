@@ -43,5 +43,14 @@
                 </tr>
             </tbody>
         </table>
+            {% for a, b in card_dict.items() %}
+        <li>{{a}}</li>
+        <li>{{b}}</li>
+            {% endfor %}
+        <hr>
+            {% for a, b in pop_dict.items() %}
+        <li>{{a}}</li>
+        <li>{{b}}</li>
+            {% endfor %}
     </body>
 </html>

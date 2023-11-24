@@ -11,7 +11,7 @@ fm.fontManager.ttflist.insert(0, fe)
 plt.rcParams.update({'font.size': 10, 'font.family': 'NanumGothic'}) # 폰트 설정
 
 def table_info(dong):
-    sales_dict, den_dict = recommService(dong)
+    sales_dict, den_dict, card_dict, pop_dict = recommService(dong)
     sales_rank = pd.DataFrame(sales_dict.items(), columns = ['업종명', '당월매출금액'])
     colors = sb.color_palette('hls', len(sales_rank['업종명']))
     sales_rank.plot(kind = 'bar', x = '업종명', y = '당월매출금액', color = colors, edgecolor='black')
@@ -55,4 +55,4 @@ def table_info(dong):
         trans_den[key] = val
 
     # 이미지 2장, dict 2개를 최종 반환
-    return sales_img, density_img, trans_sales, trans_den
+    return sales_img, density_img, card_dict, pop_dict, trans_sales, trans_den
