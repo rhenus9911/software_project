@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/static/css/globals.css" />
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="static/css/globals.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
   </head>
   <body>
     <div class="mainpage">
@@ -12,9 +12,6 @@
             <div class="text-wrapper" style="display: hidden;">(지도영역)</div>            
             <iframe style="margin-top:7px; margin-left:-5px;" src="{{url_for('static', filename='QGIS/index.html')}}" width="470" height="420"></iframe>
             <!--<iframe style="margin-top:7px; margin-left:-5px;" src="/QGIS/index.html" width="470" height="420"></iframe>-->
-            <div class="overlap">
-              <button class="rectangle"><div class="text-wrapper-2">지도 확장</div></button>
-            </div>
           </div>
         </div>
         <div class="result-area">
@@ -39,7 +36,7 @@
                         <td style="width: 10%; text-align: center;" rowspan="6">
                             <img src="{{url_for ('static' , filename='images/'+graph2)}}" width="400px" />
                         </td>
-                        <td style="width: auto; text-align: center; height: auto;" id="roadview" rowspan="6"></td>
+                        <!--<td style="width: auto; text-align: center; height: auto;" id="roadview" rowspan="6"></td>-->
             
                     </tr>
                         {% for a, b in den_dict.items() %}
@@ -56,7 +53,7 @@
         <form method="get">
           <input name="dong" style="display: none;">
           <div class="confirm-button">
-            <button class="overlap-2"><div class="text-wrapper-4">확인</div></button>
+            <button class="overlap-2" id="confirmButton"><div class="text-wrapper-4">확인</div></button>
           </div>
           <div class="select-box">
             <div class="text-wrapper-5">동/읍/면</div>
@@ -79,7 +76,7 @@
                   <option>만덕2동</option>
                   <option>만덕3동</option>
                 </select>
-                <select name="BJDd" class="ds" style="visibility:hidden;">
+                <select name="BJDd" class="ds" style="visibility:hidden;" disabled>
                   <option>부전1동</option>
                   <option>부전2동</option>
                   <option>연지동</option>
@@ -101,7 +98,7 @@
                   <option>범천1동</option>
                   <option>범천2동</option>
                 </select>
-                <select name="Dd" class="ds" style="visibility:hidden;">
+                <select name="Dd" class="ds" style="visibility:hidden;" disabled>
                   <option>초량1동</option>
                   <option>초량2동</option>
                   <option>초량3동</option>
@@ -115,7 +112,7 @@
                   <option>범일2동</option>
                   <option>범일5동</option>
                 </select>
-                <select name="DNd" class="ds" style="visibility:hidden;">
+                <select name="DNd" class="ds" style="visibility:hidden;" disabled>
                   <option>수민동</option>
                   <option>복산동</option>
                   <option>명륜동</option>
@@ -130,13 +127,13 @@
                   <option>명장1동</option>
                   <option>명장2동</option>
                 </select>
-                <select name="GICd" class="ds" style="visibility:hidden;">
+                <select name="GICd" class="ds" style="visibility:hidden;" disabled>
                   <option>기장읍</option>
                   <option>장안읍</option>
                   <option>정관읍</option>
                   <option>철마면</option>
                 </select>
-                <select name="GJd" class="ds" style="visibility:hidden;">
+                <select name="GJd" class="ds" style="visibility:hidden;" disabled>
                   <option>서1동</option>
                   <option>서2동</option>
                   <option>서3동</option>
@@ -154,7 +151,7 @@
                   <option>구서2동</option>
                   <option>금성동</option>
                 </select>
-                <select name="GSd" class="ds" style="visibility:hidden;">
+                <select name="GSd" class="ds" style="visibility:hidden;" disabled>
                   <option>대저1동</option>
                   <option>대저2동</option>
                   <option>강동동</option>
@@ -164,7 +161,7 @@
                   <option>녹산동</option>
                   <option>가덕도동</option>
                 </select>
-                <select name="HDd" class="ds" style="visibility:hidden;">
+                <select name="HDd" class="ds" style="visibility:hidden;" disabled>
                   <option>우1동</option>
                   <option>우2동</option>
                   <option>우3동</option>
@@ -184,7 +181,7 @@
                   <option>재송1동</option>
                   <option>재송2동</option>
                 </select>
-                <select name="Jd" class="ds" style="visibility:hidden;">
+                <select name="Jd" class="ds" style="visibility:hidden;" disabled>
                   <option>중앙동</option>
                   <option>동광동</option>
                   <option>대청동</option>
@@ -195,7 +192,7 @@
                   <option>영주1동</option>
                   <option>영주2동</option>
                 </select>
-                <select name="Nd" class="ds" style="visibility:hidden;">
+                <select name="Nd" class="ds" style="visibility:hidden;" disabled>
                   <option>대연1동</option>
                   <option>대연3동</option>
                   <option>대연4동</option>
@@ -214,7 +211,7 @@
                   <option>문현3동</option>
                   <option>문현4동</option>
                 </select>
-                <select name="Sd" class="ds" style="visibility:hidden;">
+                <select name="Sd" class="ds" style="visibility:hidden;" disabled>
                   <option>동대신1동</option>
                   <option>동대신2동</option>
                   <option>동대신3동</option>
@@ -229,7 +226,7 @@
                   <option>남부민2동</option>
                   <option>암남동</option>
                 </select>
-                <select name="SHd" class="ds" style="visibility:hidden;">
+                <select name="SHd" class="ds" style="visibility:hidden;" disabled>
                   <option>괴정1동</option>
                   <option>괴정2동</option>
                   <option>괴정3동</option>
@@ -247,7 +244,7 @@
                   <option>감천1동</option>
                   <option>감천2동</option>
                 </select>
-                <select name="SSd" class="ds" style="visibility:hidden;">
+                <select name="SSd" class="ds" style="visibility:hidden;" disabled>
                   <option>삼락동</option>
                   <option>모라1동</option>
                   <option>모라3동</option>
@@ -261,7 +258,7 @@
                   <option>학장동</option>
                   <option>엄궁동</option>
                 </select>
-                <select name="SYd" class="ds" style="visibility:hidden;">
+                <select name="SYd" class="ds" style="visibility:hidden;" disabled>
                   <option>남천1동</option>
                   <option>남천2동</option>
                   <option>수영동</option>
@@ -273,7 +270,7 @@
                   <option>광안4동</option>
                   <option>민락동</option>
                 </select>
-                <select name="YDd" class="ds" style="visibility:hidden;">
+                <select name="YDd" class="ds" style="visibility:hidden;" disabled>
                   <option>남항동</option>
                   <option>영선1동</option>
                   <option>영선2동</option>
@@ -286,7 +283,7 @@
                   <option>동삼2동</option>
                   <option>동삼3동</option>
                 </select>
-                <select name="YJd" class="ds" style="visibility:hidden;">
+                <select name="YJd" class="ds" style="visibility:hidden;" disabled>
                   <option>거제1동</option>
                   <option>거제2동</option>
                   <option>거제3동</option>
@@ -367,27 +364,120 @@
     });
   </script><!--화살표 회전script-->
   <script>
+    function disableSelect(a) {
+      const selectElement = a;
+      selectElement.disabled = true; // select 요소를 비활성화
+    }
+    function enableSelect(a) {
+    const selectElement = a;
+    selectElement.disabled = false; // select 요소를 활성화
+  }
+
+
     document.getElementById('gg').addEventListener('change', function() {
       const value = this.value; // 선택한 값 가져오기
   
       // 모든 클래스를 숨김 처리
       const allClasses = document.querySelectorAll('.ds');
       allClasses.forEach(element => {
+        disableSelect(element);
         element.style.visibility = 'hidden';
       });
   
       // 선택한 값을 가진 클래스만 보이게 처리
       const selectedClass = document.querySelector(`select[name="${value}d"]`);
       if (selectedClass) {
+        enableSelect(selectedClass);
         selectedClass.style.visibility = 'visible';
-  
-        // form의 'dong' 필드에 선택된 값 설정
-        const dongField = document.querySelector('input[name="dong"]');
-        if (dongField) {
-          const selectedOption = selectedClass.value;
-          dongField.value = selectedOption;
-        }
       }
     });
-    </script><!--동/읍/면 시각화script-->
+  </script><!--동/읍/면 시각화script-->
+
+  <script>
+    document.getElementById('confirmButton').addEventListener('click', function() {
+      const ggSelect = document.getElementById('gg');
+      const value = ggSelect.value;
+      const selectedClass = document.querySelector(`select[name="${value}d"]`);
+
+      const dongInput = document.querySelector('input[name="dong"]');
+
+      if (ggSelect && selectedClass) {
+        dongInput.value = selectedClass.value;
+        ggSelect.disabled = true; // gg select 요소를 비활성화
+        selectedClass.disabled = true; // 선택된 select 요소를 비활성화
+      }
+    });
+  </script><!--전달 파라미터 정리-->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 현재 URL에서 쿼리 문자열 가져오기
+    const queryString = window.location.search;
+
+    // URL 쿼리 문자열을 객체로 변환하는 함수
+    const getParams = (queryString) => {
+      const params = {};
+      const pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+      for (let i = 0; i < pairs.length; i++) {
+        const pair = pairs[i].split('=');
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+      }
+      return params;
+    };
+
+    // 쿼리 문자열을 객체로 변환
+    const params = getParams(queryString);
+    console.log(params); // 가져온 GET 파라미터 출력
+
+    // 'dong' 파라미터 값 가져오기
+    const dongParam = params['dong'];
+    console.log('Dong:', dongParam);
+    console.log(dongParam);
+
+    // 'dong' 파라미터 값이 있다면 해당하는 select box 선택 및 활성화
+    if (dongParam) {
+      const allSelects = document.getElementsByClassName('ds');
+      for (let i = 0; i < allSelects.length; i++) {
+        const select = allSelects[i];
+        select.style.visibility = 'hidden'; // 일단 모든 select box를 숨김
+        select.disabled = true; // 일단 모든 select box를 비활성화
+      };
+
+      // 'dong' 파라미터 값과 일치하는 option을 찾아서 선택
+      const select = findSelectBoxByOptionText(allSelects, dongParam);
+        console.log(select);
+        if (select) {
+          select.style.visibility = 'visible'; // 해당 select box를 보이게 처리
+          select.disabled = false; // 해당 select box를 활성화
+          select.value = dongParam; // 해당 동 값으로 설정
+          
+          // 해당 select box에 따른 'gg' select box를 찾아서 선택 및 활성화
+          const ggSelect = document.getElementById('gg');
+          if (ggSelect) {
+            const ggValue = select.getAttribute('name').slice(0, -1);
+            ggSelect.value = ggValue; // 'dong'에 해당하는 'gg' 값으로 설정
+
+            // 'gg'에 따른 'dong'에 해당하는 군/구 select box 활성화
+            //const dongGgSelect = document.querySelector(`select[name="${ggValue}d"]`);
+            //if (dongGgSelect) {
+            //  dongGgSelect.style.visibility = 'visible';
+            //  dongGgSelect.disabled = false;
+            //  dongGgSelect.value = dongParam;
+            //}
+          }
+        }
+      }
+    }
+  );
+  function findSelectBoxByOptionText(selectBoxes, optionText) {
+    for (let i = 0; i < selectBoxes.length; i++) {
+      const options = selectBoxes[i].querySelectorAll('option');
+      for (let j = 0; j < options.length; j++) {
+        if (options[j].textContent === optionText) {
+          return selectBoxes[i];
+        }
+      }
+    }
+    return null;
+  }
+</script>
 </html>
