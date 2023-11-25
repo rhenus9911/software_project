@@ -12,7 +12,7 @@ dir = "data"
 total_pop = pd.read_csv(f"{dir}/total_pop.csv")
 
 # 부산시 행정동별 카드매출
-total_card = pd.read_csv(f"{dir}/total_cards.csv")
+card = pd.read_csv(f"{dir}/total_cards.csv")
 
 # 부산시 행정동별 음식점
 total_food = pd.read_csv(f"{dir}/total_food.csv")
@@ -22,12 +22,12 @@ total_sales = pd.read_csv(f"{dir}/total_sales.csv")
 
 # 입력한 행정동별 요식업 분류
 
-def recommService(dong):
+def similarity(dong):
   code_table = pd.DataFrame(total_sales['행정코드'].unique(), index=total_sales['행정동명'].unique(), columns=['상권코드'])
   foodCode_table = pd.DataFrame(total_food['상권업종소분류코드'].unique(), index=total_food['상권업종소분류명'].unique(), columns=['분류코드'])
   d_code = int(code_table.loc[dong].iloc[0])
- 
   # 행정코드에 대한 상권분류
+
   dong_food = total_food[total_food['행정코드'] == d_code]
   dong_food = dong_food.reset_index(drop=True)
 
@@ -38,22 +38,6 @@ def recommService(dong):
 
   for i in range(len(index)):
     f_code_dict[f_code[i]] = index[i]
-
-  c_code_dict = {}
-  dong_card = total_card[total_card['행정코드'] == d_code].iloc[0]
-  card_index = dong_card.index.to_list()
-  dong_card = dong_card.to_list()
-  for i in range(len(card_index)):
-    c_code_dict[card_index[i]] = dong_card[i]
-
-  p_code_dict = {}
-  dong_pop = total_pop[total_pop['행정코드'] == d_code]
-
-  pop_class = dong_pop['class'].to_list()
-  pop_val = dong_pop['val'].to_list()
-
-  for i in range(len(dong_pop)):
-    p_code_dict[pop_class[i]] = pop_val[i]
 
   # 유동인구비율을 고려하여 선택한 상권과 비슷한 상권 찾기
   data_pv =  pd.pivot_table(total_pop, index="행정코드", columns="class", values="val")
@@ -178,6 +162,7 @@ def recommService(dong):
 
       position_sales_dict = dict([(x, int(y)) for x, y in zip(sales['상권업종소분류코드'], sales['매출'])])
       sales_dict = merge_two_dicts(sales_dict, position_sales_dict)
+      # print(sales_dict)
 
   den_dict = {}  # 밀집도 top5 결과 dict
   for i in den:
@@ -195,4 +180,4 @@ def recommService(dong):
   for key in den_dict:
     dd[f_code_dict[key]] = den_dict[key]
   
-  return sd, dd, c_code_dict, p_code_dict
+  return sd, dd

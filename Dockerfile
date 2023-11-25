@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . /app
 
 # Update and install required packages
-RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends build-essential vim fonts-nanum
+RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends build-essential vim
 
 # Install Python dependencies
 RUN pip install --no-cache-dir flask pandas numpy matplotlib seaborn scikit-learn
