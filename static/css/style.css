@@ -277,3 +277,11 @@ option{
   box-shadow: 0px 4px 4px #00000040;
 }
 
+td{
+  vertical-align: middle;
+  
+}
+
+table{
+  border-collapse:collapse;
+}
