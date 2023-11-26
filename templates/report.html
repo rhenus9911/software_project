@@ -16,28 +16,33 @@
         </div>
         <div class="result-area">
           <div class="div-wrapper">
-            <table style="border-collapse: collapse; width:100%; border:1px black;">
-              <tbody>
-                  <tr>
-                      <td style="width: 10%; text-align: center;">업종 - 매출액</td>
-                      <td style="width: 10%; text-align: center;">평균 매출 금액(단위: 원)</td>
-                      <td style="width: 10%; text-align: center;" rowspan="6">
-                          <img src="{{url_for ('static' , filename='images/'+graph1)}}" width="400px" />
-                      </td>
-                  </tr>
-              </tbody>
-            </table>
-          
-            <table style="border-collapse: collapse; width:100%; border:1px black;">
+            <div style="display:flex">
+              <table style="border-collapse: collapse; width:60%; border:1px black;">
+                <tbody>
+                    <tr>
+                        <td style="width: 10%; text-align: center;">업종 - 매출액</td>
+                        <td style="width: 10%; text-align: center;">평균 매출 금액(단위: 원)</td>
+                        <td style="width: 10%; text-align: center; height: auto;" rowspan="6"></td>
+                        </td>
+                    </tr>
+                      {% for x, y in sales_dict.items() %}
+                    <tr>
+                        <td style="width: 10%; text-align: center;">{{x}}</td>
+                        <td style="width: 10%; text-align: center;">{{y}}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+              </table>
+              <img src="{{url_for ('static' , filename='images/'+graph1)}}" width="40%" />
+            </div>
+            <div style="display:flex">
+              <table style="border-collapse: collapse; width:60%; border:1px black;">
                 <tbody>
                     <tr>
                         <td style="width: 10%; text-align: center;">업종 - 밀집도</td>
-                        <td style="width: 10%; text-align: center;">평균 매출 금액(단위: 원)</td>
-                        <td style="width: 10%; text-align: center;" rowspan="6">
-                            <img src="{{url_for ('static' , filename='images/'+graph2)}}" width="400px" />
+                        <td style="width: 10%; text-align: center;">평균 매출 금액(단위: 원)</td>                            
                         </td>
-                        <!--<td style="width: auto; text-align: center; height: auto;" id="roadview" rowspan="6"></td>-->
-            
+                        <td style="width: 10%; text-align: center; height: auto;" id="roadview" rowspan="6"></td>
                     </tr>
                         {% for a, b in den_dict.items() %}
                     <tr>
@@ -46,8 +51,11 @@
                         {% endfor %}
                     </tr>
                 </tbody>
-            </table>
-            <!--<img class="rslt" src="http://via.placeholder.com/400x300">-->
+              </table>
+              <img src="{{url_for ('static' , filename='images/'+graph2)}}" width="40%" />
+            </div>
+            
+            <img class="rslt" src="http://via.placeholder.com/800x200">
           </div>
         </div>
         <form method="get">
@@ -392,7 +400,6 @@
       }
     });
   </script><!--동/읍/면 시각화script-->
-
   <script>
     document.getElementById('confirmButton').addEventListener('click', function() {
       const ggSelect = document.getElementById('gg');
@@ -408,76 +415,76 @@
       }
     });
   </script><!--전달 파라미터 정리-->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // 현재 URL에서 쿼리 문자열 가져오기
-    const queryString = window.location.search;
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 현재 URL에서 쿼리 문자열 가져오기
+      const queryString = window.location.search;
 
-    // URL 쿼리 문자열을 객체로 변환하는 함수
-    const getParams = (queryString) => {
-      const params = {};
-      const pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
-      for (let i = 0; i < pairs.length; i++) {
-        const pair = pairs[i].split('=');
-        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-      }
-      return params;
-    };
-
-    // 쿼리 문자열을 객체로 변환
-    const params = getParams(queryString);
-    console.log(params); // 가져온 GET 파라미터 출력
-
-    // 'dong' 파라미터 값 가져오기
-    const dongParam = params['dong'];
-    console.log('Dong:', dongParam);
-    console.log(dongParam);
-
-    // 'dong' 파라미터 값이 있다면 해당하는 select box 선택 및 활성화
-    if (dongParam) {
-      const allSelects = document.getElementsByClassName('ds');
-      for (let i = 0; i < allSelects.length; i++) {
-        const select = allSelects[i];
-        select.style.visibility = 'hidden'; // 일단 모든 select box를 숨김
-        select.disabled = true; // 일단 모든 select box를 비활성화
+      // URL 쿼리 문자열을 객체로 변환하는 함수
+      const getParams = (queryString) => {
+        const params = {};
+        const pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+        for (let i = 0; i < pairs.length; i++) {
+          const pair = pairs[i].split('=');
+          params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+        }
+        return params;
       };
 
-      // 'dong' 파라미터 값과 일치하는 option을 찾아서 선택
-      const select = findSelectBoxByOptionText(allSelects, dongParam);
-        console.log(select);
-        if (select) {
-          select.style.visibility = 'visible'; // 해당 select box를 보이게 처리
-          select.disabled = false; // 해당 select box를 활성화
-          select.value = dongParam; // 해당 동 값으로 설정
-          
-          // 해당 select box에 따른 'gg' select box를 찾아서 선택 및 활성화
-          const ggSelect = document.getElementById('gg');
-          if (ggSelect) {
-            const ggValue = select.getAttribute('name').slice(0, -1);
-            ggSelect.value = ggValue; // 'dong'에 해당하는 'gg' 값으로 설정
+      // 쿼리 문자열을 객체로 변환
+      const params = getParams(queryString);
+      console.log(params); // 가져온 GET 파라미터 출력
 
-            // 'gg'에 따른 'dong'에 해당하는 군/구 select box 활성화
-            //const dongGgSelect = document.querySelector(`select[name="${ggValue}d"]`);
-            //if (dongGgSelect) {
-            //  dongGgSelect.style.visibility = 'visible';
-            //  dongGgSelect.disabled = false;
-            //  dongGgSelect.value = dongParam;
-            //}
+      // 'dong' 파라미터 값 가져오기
+      const dongParam = params['dong'];
+      console.log('Dong:', dongParam);
+      console.log(dongParam);
+
+      // 'dong' 파라미터 값이 있다면 해당하는 select box 선택 및 활성화
+      if (dongParam) {
+        const allSelects = document.getElementsByClassName('ds');
+        for (let i = 0; i < allSelects.length; i++) {
+          const select = allSelects[i];
+          select.style.visibility = 'hidden'; // 일단 모든 select box를 숨김
+          select.disabled = true; // 일단 모든 select box를 비활성화
+        };
+
+        // 'dong' 파라미터 값과 일치하는 option을 찾아서 선택
+        const select = findSelectBoxByOptionText(allSelects, dongParam);
+          console.log(select);
+          if (select) {
+            select.style.visibility = 'visible'; // 해당 select box를 보이게 처리
+            select.disabled = false; // 해당 select box를 활성화
+            select.value = dongParam; // 해당 동 값으로 설정
+            
+            // 해당 select box에 따른 'gg' select box를 찾아서 선택 및 활성화
+            const ggSelect = document.getElementById('gg');
+            if (ggSelect) {
+              const ggValue = select.getAttribute('name').slice(0, -1);
+              ggSelect.value = ggValue; // 'dong'에 해당하는 'gg' 값으로 설정
+
+              // 'gg'에 따른 'dong'에 해당하는 군/구 select box 활성화
+              //const dongGgSelect = document.querySelector(`select[name="${ggValue}d"]`);
+              //if (dongGgSelect) {
+              //  dongGgSelect.style.visibility = 'visible';
+              //  dongGgSelect.disabled = false;
+              //  dongGgSelect.value = dongParam;
+              //}
+            }
           }
         }
       }
-    }
-  );
-  function findSelectBoxByOptionText(selectBoxes, optionText) {
-    for (let i = 0; i < selectBoxes.length; i++) {
-      const options = selectBoxes[i].querySelectorAll('option');
-      for (let j = 0; j < options.length; j++) {
-        if (options[j].textContent === optionText) {
-          return selectBoxes[i];
+    );
+    function findSelectBoxByOptionText(selectBoxes, optionText) {
+      for (let i = 0; i < selectBoxes.length; i++) {
+        const options = selectBoxes[i].querySelectorAll('option');
+        for (let j = 0; j < options.length; j++) {
+          if (options[j].textContent === optionText) {
+            return selectBoxes[i];
+          }
         }
       }
+      return null;
     }
-    return null;
-  }
-</script>
+  </script>
 </html>
