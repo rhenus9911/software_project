@@ -11,7 +11,7 @@
     <div class="div">
       <form action="/report" method="get">
         <div class="confirm-button">
-          <button class="overlap-group">
+          <button id="confirmButton" class="overlap-group">
             <div class="text-wrapper">확인</div>
           </button>
         </div>
@@ -378,5 +378,32 @@
     });
   });
 </script><!--동/읍/면 시각화script-->
+<script>
+  document.getElementById('confirmButton').addEventListener('click', function () {
+    const ggSelect = document.getElementById('gg');
+    const value = ggSelect.value;
+    const selectedClass = document.querySelector(`select[name="${value}d"]`);
+
+    const dongInput = document.querySelector('input[name="dong"]');
+
+    const guField = document.querySelector('input[name="gu"]');
+    if (guField) {
+      ggSelect = document.getElementById('gg') // selectbox -> ggSelect
+      guField.value = ggSelect.options[ggSelect.selectedIndex].text;
+      console.log(guField.value)
+    }
+
+    if (dongInput) {// dongField -> dongInput
+      const selectedOption = selectedClass.value;
+      dongInput.value = selectedOption;
+    }
+
+    if (ggSelect && selectedClass) {
+      //dongInput.value = selectedClass.value;
+      ggSelect.disabled = true; // gg select 요소를 비활성화
+      selectedClass.disabled = true; // 선택된 select 요소를 비활성화
+    }
+  });
+</script>
 
 </html>
