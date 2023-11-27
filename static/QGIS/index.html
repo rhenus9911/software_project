@@ -1130,13 +1130,13 @@
         });
         bounds_group.addLayer(layer__16);
         var baseMaps = {};
-        L.control.layers(baseMaps, { '<img src="legend/_16.png" /> 강서구': layer__16, '<img src="legend/_15.png" /> 금정구': layer__15, '<img src="legend/_14.png" /> 기장군': layer__14, '<img src="legend/_13.png" /> 남구': layer__13, '<img src="legend/_12.png" /> 동구': layer__12, '<img src="legend/_11.png" /> 동래구': layer__11, '<img src="legend/_10.png" /> 부산진구': layer__10, '<img src="legend/_9.png" /> 북구': layer__9, '<img src="legend/_8.png" /> 사상구': layer__8, '<img src="legend/_7.png" /> 사하구': layer__7, '<img src="legend/_6.png" /> 서구': layer__6, '<img src="legend/_5.png" /> 수영구': layer__5, '<img src="legend/_4.png" /> 연제구': layer__4, '<img src="legend/_3.png" /> 영도구': layer__3, '<img src="legend/_2.png" /> 중구': layer__2, '<img src="legend/_1.png" /> 해운대구': layer__1, "OpenStreetMap": layer_OpenStreetMap_0, }).addTo(map);
+        var layerControl = L.control.layers(baseMaps, { '<img src="legend/_16.png" /> 강서구': layer__16, '<img src="legend/_15.png" /> 금정구': layer__15, '<img src="legend/_14.png" /> 기장군': layer__14, '<img src="legend/_13.png" /> 남구': layer__13, '<img src="legend/_12.png" /> 동구': layer__12, '<img src="legend/_11.png" /> 동래구': layer__11, '<img src="legend/_10.png" /> 부산진구': layer__10, '<img src="legend/_9.png" /> 북구': layer__9, '<img src="legend/_8.png" /> 사상구': layer__8, '<img src="legend/_7.png" /> 사하구': layer__7, '<img src="legend/_6.png" /> 서구': layer__6, '<img src="legend/_5.png" /> 수영구': layer__5, '<img src="legend/_4.png" /> 연제구': layer__4, '<img src="legend/_3.png" /> 영도구': layer__3, '<img src="legend/_2.png" /> 중구': layer__2, '<img src="legend/_1.png" /> 해운대구': layer__1, "OpenStreetMap": layer_OpenStreetMap_0, }).addTo(map);
         setBounds();
     </script>
     <!-- 이벤트 처리-->
     <script>
         window.addEventListener('message', function (event) {
-            var g, d, recommend = event.data
+            let [g, d, recommend] = event.data
             //기존에 필터링 된 레이어가 있었다면 제거
             if (bounds_group.hasLayer(layer__result)) {
                 layerControl.removeLayer(layer__result)
@@ -1144,8 +1144,10 @@
             }
             // 필터링 하는 부분
             var original_data = gu[g]
-            console.log(original_data)
-            console.log(gu["해운대구"])
+            console.log(g)
+            console.log(d)
+            console.log(recommend)
+            console.log(gu[g])
             console.log(g, d, recommend)
             var filteredData = {
                 ...original_data,
@@ -1189,14 +1191,14 @@
                     pane: 'pane__result',
                     radius: 4.0,
                     opacity: 1,
-                    color: 'rgba(43, 167, 0, 1)',
+                    color: 'rgba(0, 0, 0, 1)',
                     dashArray: '',
                     lineCap: 'butt',
                     lineJoin: 'miter',
                     weight: 1,
                     fill: true,
                     fillOpacity: 1,
-                    fillColor: 'rgba(43,167,0,1)',
+                    fillColor: 'rgba(255,0,0,1)',
                     interactive: true,
                 }
             }
@@ -1220,8 +1222,7 @@
             });
             bounds_group.addLayer(layer__result);
             map.addLayer(layer__result)
-            layerControl.addOverlay({ '<img src="legend/_16.png" /> 결과': layer__result })
-            setBounds();
+            layerControl.addOverlay({ '<img src="legend/_10.png" /> 결과': layer__result })
         })
     </script>
 </body>
