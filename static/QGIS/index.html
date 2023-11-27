@@ -1,68 +1,78 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css">
-        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
 
-        <!-- 전체화면 플러그인 추가-->
-        <link rel="stylesheet" href="css/leaflet.fullscreen.css">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/qgis2web.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
 
-        <style>
+    <!-- 전체화면 플러그인 추가-->
+    <link rel="stylesheet" href="css/leaflet.fullscreen.css">
+
+    <style>
         #map {
             width: 1306px;
             height: 683px;
         }
-        </style>
-        <title></title>
-    </head>
-    <body>
-        <div id="map">
-        </div>
-        <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script>
-        <script src="js/leaflet.rotatedMarker.js"></script>
-        <script src="js/leaflet.pattern.js"></script>
-        <script src="js/leaflet-hash.js"></script>
-        <script src="js/Autolinker.min.js"></script>
-        <script src="js/rbush.min.js"></script>
-        <script src="js/labelgun.min.js"></script>
-        <script src="js/labels.js"></script>
-        <script src="data/_1.js"></script>
-        <script src="data/_2.js"></script>
-        <script src="data/_3.js"></script>
-        <script src="data/_4.js"></script>
-        <script src="data/_5.js"></script>
-        <script src="data/_6.js"></script>
-        <script src="data/_7.js"></script>
-        <script src="data/_8.js"></script>
-        <script src="data/_9.js"></script>
-        <script src="data/_10.js"></script>
-        <script src="data/_11.js"></script>
-        <script src="data/_12.js"></script>
-        <script src="data/_13.js"></script>
-        <script src="data/_14.js"></script>
-        <script src="data/_15.js"></script>
-        <script src="data/_16.js"></script>
+    </style>
+    <title></title>
+</head>
 
-        <!--전체화면 플러그인 추가-->
-        <script src="js/leaflet.fullscreen.js"></script>
+<body>
+    <div id="map">
+    </div>
+    <script src="js/qgis2web_expressions.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/leaflet.rotatedMarker.js"></script>
+    <script src="js/leaflet.pattern.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <script src="js/rbush.min.js"></script>
+    <script src="js/labelgun.min.js"></script>
+    <script src="js/labels.js"></script>
+    <script src="data/_1.js"></script>
+    <script src="data/_2.js"></script>
+    <script src="data/_3.js"></script>
+    <script src="data/_4.js"></script>
+    <script src="data/_5.js"></script>
+    <script src="data/_6.js"></script>
+    <script src="data/_7.js"></script>
+    <script src="data/_8.js"></script>
+    <script src="data/_9.js"></script>
+    <script src="data/_10.js"></script>
+    <script src="data/_11.js"></script>
+    <script src="data/_12.js"></script>
+    <script src="data/_13.js"></script>
+    <script src="data/_14.js"></script>
+    <script src="data/_15.js"></script>
+    <script src="data/_16.js"></script>
+    <!--구 오브젝트 선언-->
+    <script>
+        const gu = {
+            "해운대구": json__1, "중구": json__2, "영도구": json__3, "연제구": json__4, "수영구": json__5, "서구": json__6,
+            "사하구": json__7, "사상구": json__8, "북구": json__9, "부산진구": json__10, "동래구": json__11, "동구": json__12,
+            "남구": json__13, "기장군": json__14, "금정구": json__15, "강서구": json__16
+        }
+    </script>
+    <!--전체화면 플러그인 추가-->
+    <script src="js/leaflet.fullscreen.js"></script>
 
-        <script>
+    <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[34.99556715721708,128.64912076564482],[35.40163868877137,129.60066348975792]]);
+            zoomControl: true, maxZoom: 28, minZoom: 1
+        }).fitBounds([[34.99556715721708, 128.64912076564482], [35.40163868877137, 129.60066348975792]]);
 
         //전체화면 기능 추가
         map.addControl(new L.Control.Fullscreen());
-        
+
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var autolinker = new Autolinker({ truncate: { length: 30, location: 'smart' } });
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -106,7 +116,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__1_0() {
@@ -171,7 +181,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__2_0() {
@@ -236,7 +246,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__3_0() {
@@ -301,7 +311,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__4_0() {
@@ -366,7 +376,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__5_0() {
@@ -431,7 +441,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__6_0() {
@@ -496,7 +506,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__7_0() {
@@ -561,7 +571,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__8_0() {
@@ -626,7 +636,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__9_0() {
@@ -691,7 +701,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__10_0() {
@@ -756,7 +766,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__11_0() {
@@ -821,7 +831,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__12_0() {
@@ -886,7 +896,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__13_0() {
@@ -951,7 +961,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__14_0() {
@@ -1016,7 +1026,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__15_0() {
@@ -1081,7 +1091,7 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style__16_0() {
@@ -1120,8 +1130,100 @@
         });
         bounds_group.addLayer(layer__16);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/_16.png" /> 강서구': layer__16,'<img src="legend/_15.png" /> 금정구': layer__15,'<img src="legend/_14.png" /> 기장군': layer__14,'<img src="legend/_13.png" /> 남구': layer__13,'<img src="legend/_12.png" /> 동구': layer__12,'<img src="legend/_11.png" /> 동래구': layer__11,'<img src="legend/_10.png" /> 부산진구': layer__10,'<img src="legend/_9.png" /> 북구': layer__9,'<img src="legend/_8.png" /> 사상구': layer__8,'<img src="legend/_7.png" /> 사하구': layer__7,'<img src="legend/_6.png" /> 서구': layer__6,'<img src="legend/_5.png" /> 수영구': layer__5,'<img src="legend/_4.png" /> 연제구': layer__4,'<img src="legend/_3.png" /> 영도구': layer__3,'<img src="legend/_2.png" /> 중구': layer__2,'<img src="legend/_1.png" /> 해운대구': layer__1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);
+        L.control.layers(baseMaps, { '<img src="legend/_16.png" /> 강서구': layer__16, '<img src="legend/_15.png" /> 금정구': layer__15, '<img src="legend/_14.png" /> 기장군': layer__14, '<img src="legend/_13.png" /> 남구': layer__13, '<img src="legend/_12.png" /> 동구': layer__12, '<img src="legend/_11.png" /> 동래구': layer__11, '<img src="legend/_10.png" /> 부산진구': layer__10, '<img src="legend/_9.png" /> 북구': layer__9, '<img src="legend/_8.png" /> 사상구': layer__8, '<img src="legend/_7.png" /> 사하구': layer__7, '<img src="legend/_6.png" /> 서구': layer__6, '<img src="legend/_5.png" /> 수영구': layer__5, '<img src="legend/_4.png" /> 연제구': layer__4, '<img src="legend/_3.png" /> 영도구': layer__3, '<img src="legend/_2.png" /> 중구': layer__2, '<img src="legend/_1.png" /> 해운대구': layer__1, "OpenStreetMap": layer_OpenStreetMap_0, }).addTo(map);
         setBounds();
-        </script>
-    </body>
+    </script>
+    <!-- 이벤트 처리-->
+    <script>
+        window.addEventListener('message', function (event) {
+            var g, d, recommend = event.data
+            //기존에 필터링 된 레이어가 있었다면 제거
+            if (bounds_group.hasLayer(layer__result)) {
+                layerControl.removeLayer(layer__result)
+                bounds_group.removeLayer(layer__result)
+            }
+            // 필터링 하는 부분
+            var original_data = gu[g]
+            console.log(original_data)
+            console.log(gu["해운대구"])
+            console.log(g, d, recommend)
+            var filteredData = {
+                ...original_data,
+                features: original_data.features.filter(function (feature) {
+                    return feature.properties.행정동명.includes(d) && feature.properties.상권업종소분류명 === recommend;
+                })
+            }
+            console.log(filteredData)
+            // 필터링된 데이터를 토대로 layer 만듦
+            function pop__result(feature, layer) {
+                var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['행정동명'] !== null ? autolinker.link(feature.properties['행정동명'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['상권업종대분류명'] !== null ? autolinker.link(feature.properties['상권업종대분류명'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['상권업종중분류명'] !== null ? autolinker.link(feature.properties['상권업종중분류명'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['상권업종소분류명'] !== null ? autolinker.link(feature.properties['상권업종소분류명'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['상권업종소분류코드'] !== null ? autolinker.link(feature.properties['상권업종소분류코드'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['상호명'] !== null ? autolinker.link(feature.properties['상호명'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['경도'] !== null ? autolinker.link(feature.properties['경도'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+                layer.bindPopup(popupContent, { maxHeight: 400 });
+            }
+            function style__result() {
+                return {
+                    pane: 'pane__result',
+                    radius: 4.0,
+                    opacity: 1,
+                    color: 'rgba(43, 167, 0, 1)',
+                    dashArray: '',
+                    lineCap: 'butt',
+                    lineJoin: 'miter',
+                    weight: 1,
+                    fill: true,
+                    fillOpacity: 1,
+                    fillColor: 'rgba(43,167,0,1)',
+                    interactive: true,
+                }
+            }
+            map.createPane('pane__result');
+            map.getPane('pane__result').style.zIndex = 401;
+            map.getPane('pane__result').style['mix-blend-mode'] = 'normal';
+            var layer__result = new L.geoJson(filteredData, {
+                attribution: '',
+                interactive: true,
+                dataVar: 'filteredData',
+                layerName: 'layer__result',
+                pane: 'pane__result',
+                onEachFeature: pop__result,
+                pointToLayer: function (feature, latlng) {
+                    var context = {
+                        feature: feature,
+                        variables: {}
+                    };
+                    return L.circleMarker(latlng, style__result(feature));
+                },
+            });
+            bounds_group.addLayer(layer__result);
+            map.addLayer(layer__result)
+            layerControl.addOverlay({ '<img src="legend/_16.png" /> 결과': layer__result })
+            setBounds();
+        })
+    </script>
+</body>
+
 </html>
