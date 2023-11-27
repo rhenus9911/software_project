@@ -9,7 +9,7 @@
 <body>
   <div class="intro">
     <div class="div">
-      <form action="/report" method="get">
+      <form method="get" action="/report">
         <div class="confirm-button">
           <button id="confirmButton" class="overlap-group">
             <div class="text-wrapper">확인</div>
@@ -35,7 +35,7 @@
               <option>만덕2동</option>
               <option>만덕3동</option>
             </select>
-            <select name="BJDd" class="ds" style="visibility:hidden;">
+            <select name="BJDd" class="ds" style="visibility:hidden;" disabled>
               <option>부전1동</option>
               <option>부전2동</option>
               <option>연지동</option>
@@ -57,7 +57,7 @@
               <option>범천1동</option>
               <option>범천2동</option>
             </select>
-            <select name="Dd" class="ds" style="visibility:hidden;">
+            <select name="Dd" class="ds" style="visibility:hidden;" disabled>
               <option>초량1동</option>
               <option>초량2동</option>
               <option>초량3동</option>
@@ -71,7 +71,7 @@
               <option>범일2동</option>
               <option>범일5동</option>
             </select>
-            <select name="DNd" class="ds" style="visibility:hidden;">
+            <select name="DNd" class="ds" style="visibility:hidden;" disabled>
               <option>수민동</option>
               <option>복산동</option>
               <option>명륜동</option>
@@ -86,13 +86,13 @@
               <option>명장1동</option>
               <option>명장2동</option>
             </select>
-            <select name="GICd" class="ds" style="visibility:hidden;">
+            <select name="GICd" class="ds" style="visibility:hidden;" disabled>
               <option>기장읍</option>
               <option>장안읍</option>
               <option>정관읍</option>
               <option>철마면</option>
             </select>
-            <select name="GJd" class="ds" style="visibility:hidden;">
+            <select name="GJd" class="ds" style="visibility:hidden;" disabled>
               <option>서1동</option>
               <option>서2동</option>
               <option>서3동</option>
@@ -110,7 +110,7 @@
               <option>구서2동</option>
               <option>금성동</option>
             </select>
-            <select name="GSd" class="ds" style="visibility:hidden;">
+            <select name="GSd" class="ds" style="visibility:hidden;" disabled>
               <option>대저1동</option>
               <option>대저2동</option>
               <option>강동동</option>
@@ -120,7 +120,7 @@
               <option>녹산동</option>
               <option>가덕도동</option>
             </select>
-            <select name="HDd" class="ds" style="visibility:hidden;">
+            <select name="HDd" class="ds" style="visibility:hidden;" disabled>
               <option>우1동</option>
               <option>우2동</option>
               <option>우3동</option>
@@ -140,7 +140,7 @@
               <option>재송1동</option>
               <option>재송2동</option>
             </select>
-            <select name="Jd" class="ds" style="visibility:hidden;">
+            <select name="Jd" class="ds" style="visibility:hidden;" disabled>
               <option>중앙동</option>
               <option>동광동</option>
               <option>대청동</option>
@@ -151,7 +151,7 @@
               <option>영주1동</option>
               <option>영주2동</option>
             </select>
-            <select name="Nd" class="ds" style="visibility:hidden;">
+            <select name="Nd" class="ds" style="visibility:hidden;" disabled>
               <option>대연1동</option>
               <option>대연3동</option>
               <option>대연4동</option>
@@ -170,7 +170,7 @@
               <option>문현3동</option>
               <option>문현4동</option>
             </select>
-            <select name="Sd" class="ds" style="visibility:hidden;">
+            <select name="Sd" class="ds" style="visibility:hidden;" disabled>
               <option>동대신1동</option>
               <option>동대신2동</option>
               <option>동대신3동</option>
@@ -185,7 +185,7 @@
               <option>남부민2동</option>
               <option>암남동</option>
             </select>
-            <select name="SHd" class="ds" style="visibility:hidden;">
+            <select name="SHd" class="ds" style="visibility:hidden;" disabled>
               <option>괴정1동</option>
               <option>괴정2동</option>
               <option>괴정3동</option>
@@ -203,7 +203,7 @@
               <option>감천1동</option>
               <option>감천2동</option>
             </select>
-            <select name="SSd" class="ds" style="visibility:hidden;">
+            <select name="SSd" class="ds" style="visibility:hidden;" disabled>
               <option>삼락동</option>
               <option>모라1동</option>
               <option>모라3동</option>
@@ -217,7 +217,7 @@
               <option>학장동</option>
               <option>엄궁동</option>
             </select>
-            <select name="SYd" class="ds" style="visibility:hidden;">
+            <select name="SYd" class="ds" style="visibility:hidden;" disabled>
               <option>남천1동</option>
               <option>남천2동</option>
               <option>수영동</option>
@@ -229,7 +229,7 @@
               <option>광안4동</option>
               <option>민락동</option>
             </select>
-            <select name="YDd" class="ds" style="visibility:hidden;">
+            <select name="YDd" class="ds" style="visibility:hidden;" disabled>
               <option>남항동</option>
               <option>영선1동</option>
               <option>영선2동</option>
@@ -242,7 +242,7 @@
               <option>동삼2동</option>
               <option>동삼3동</option>
             </select>
-            <select name="YJd" class="ds" style="visibility:hidden;">
+            <select name="YJd" class="ds" style="visibility:hidden;" disabled>
               <option>거제1동</option>
               <option>거제2동</option>
               <option>거제3동</option>
@@ -257,360 +257,131 @@
               <option>연산9동</option>
             </select>
           </div>
-          <div class="select-box">
-            <div class="text-wrapper-2">동/읍/면</div>
-            <div class="overlap">
-              <img class="img2" src="../static/images/polygon-2.svg" />
-              <select name="Bd" class="ds">
-                <option>구포1동</option>
-                <option>구포1동</option>
-                <option>구포2동</option>
-                <option>구포3동</option>
-                <option>금곡동</option>
-                <option>화명1동</option>
-                <option>화명2동</option>
-                <option>화명3동</option>
-                <option>덕천1동</option>
-                <option>덕천2동</option>
-                <option>덕천3동</option>
-                <option>만덕1동</option>
-                <option>만덕2동</option>
-                <option>만덕3동</option>
-              </select>
-              <select name="BJDd" class="ds" style="visibility:hidden;" disabled>
-                <option>부전1동</option>
-                <option>부전2동</option>
-                <option>연지동</option>
-                <option>초읍동</option>
-                <option>양정1동</option>
-                <option>양정2동</option>
-                <option>전포1동</option>
-                <option>전포2동</option>
-                <option>부암1동</option>
-                <option>부암3동</option>
-                <option>당감1동</option>
-                <option>당감2동</option>
-                <option>당감4동</option>
-                <option>가야1동</option>
-                <option>가야2동</option>
-                <option>개금1동</option>
-                <option>개금2동</option>
-                <option>개금3동</option>
-                <option>범천1동</option>
-                <option>범천2동</option>
-              </select>
-              <select name="Dd" class="ds" style="visibility:hidden;" disabled>
-                <option>초량1동</option>
-                <option>초량2동</option>
-                <option>초량3동</option>
-                <option>초량6동</option>
-                <option>수정1동</option>
-                <option>수정2동</option>
-                <option>수정4동</option>
-                <option>수정5동</option>
-                <option>좌천동</option>
-                <option>범일1동</option>
-                <option>범일2동</option>
-                <option>범일5동</option>
-              </select>
-              <select name="DNd" class="ds" style="visibility:hidden;" disabled>
-                <option>수민동</option>
-                <option>복산동</option>
-                <option>명륜동</option>
-                <option>온천1동</option>
-                <option>온천2동</option>
-                <option>온천3동</option>
-                <option>사직1동</option>
-                <option>사직2동</option>
-                <option>사직3동</option>
-                <option>안락1동</option>
-                <option>안락2동</option>
-                <option>명장1동</option>
-                <option>명장2동</option>
-              </select>
-              <select name="GICd" class="ds" style="visibility:hidden;" disabled>
-                <option>기장읍</option>
-                <option>장안읍</option>
-                <option>정관읍</option>
-                <option>철마면</option>
-              </select>
-              <select name="GJd" class="ds" style="visibility:hidden;" disabled>
-                <option>서1동</option>
-                <option>서2동</option>
-                <option>서3동</option>
-                <option>금사회동동</option>
-                <option>부곡1동</option>
-                <option>부곡2동</option>
-                <option>부곡3동</option>
-                <option>부곡4동</option>
-                <option>장전1동</option>
-                <option>장전2동</option>
-                <option>선두구동</option>
-                <option>청룡노포동</option>
-                <option>남산동</option>
-                <option>구서1동</option>
-                <option>구서2동</option>
-                <option>금성동</option>
-              </select>
-              <select name="GSd" class="ds" style="visibility:hidden;" disabled>
-                <option>대저1동</option>
-                <option>대저2동</option>
-                <option>강동동</option>
-                <option>명지1동</option>
-                <option>명지2동</option>
-                <option>가락동</option>
-                <option>녹산동</option>
-                <option>가덕도동</option>
-              </select>
-              <select name="HDd" class="ds" style="visibility:hidden;" disabled>
-                <option>우1동</option>
-                <option>우2동</option>
-                <option>우3동</option>
-                <option>중1동</option>
-                <option>중2동</option>
-                <option>좌1동</option>
-                <option>좌2동</option>
-                <option>좌3동</option>
-                <option>좌4동</option>
-                <option>송정동</option>
-                <option>반여1동</option>
-                <option>반여2동</option>
-                <option>반여3동</option>
-                <option>반여4동</option>
-                <option>반송1동</option>
-                <option>반송2동</option>
-                <option>재송1동</option>
-                <option>재송2동</option>
-              </select>
-              <select name="Jd" class="ds" style="visibility:hidden;" disabled>
-                <option>중앙동</option>
-                <option>동광동</option>
-                <option>대청동</option>
-                <option>보수동</option>
-                <option>부평동</option>
-                <option>광복동</option>
-                <option>남포동</option>
-                <option>영주1동</option>
-                <option>영주2동</option>
-              </select>
-              <select name="Nd" class="ds" style="visibility:hidden;" disabled>
-                <option>대연1동</option>
-                <option>대연3동</option>
-                <option>대연4동</option>
-                <option>대연5동</option>
-                <option>대연6동</option>
-                <option>용호1동</option>
-                <option>용호2동</option>
-                <option>용호3동</option>
-                <option>용호4동</option>
-                <option>용당동</option>
-                <option>감만1동</option>
-                <option>감만2동</option>
-                <option>우암동</option>
-                <option>문현1동</option>
-                <option>문현2동</option>
-                <option>문현3동</option>
-                <option>문현4동</option>
-              </select>
-              <select name="Sd" class="ds" style="visibility:hidden;" disabled>
-                <option>동대신1동</option>
-                <option>동대신2동</option>
-                <option>동대신3동</option>
-                <option>서대신1동</option>
-                <option>서대신3동</option>
-                <option>서대신4동</option>
-                <option>부민동</option>
-                <option>아미동</option>
-                <option>초장동</option>
-                <option>충무동</option>
-                <option>남부민1동</option>
-                <option>남부민2동</option>
-                <option>암남동</option>
-              </select>
-              <select name="SHd" class="ds" style="visibility:hidden;" disabled>
-                <option>괴정1동</option>
-                <option>괴정2동</option>
-                <option>괴정3동</option>
-                <option>괴정4동</option>
-                <option>당리동</option>
-                <option>하단1동</option>
-                <option>하단2동</option>
-                <option>신평1동</option>
-                <option>신평2동</option>
-                <option>장림1동</option>
-                <option>장림2동</option>
-                <option>다대1동</option>
-                <option>다대2동</option>
-                <option>구평동</option>
-                <option>감천1동</option>
-                <option>감천2동</option>
-              </select>
-              <select name="SSd" class="ds" style="visibility:hidden;" disabled>
-                <option>삼락동</option>
-                <option>모라1동</option>
-                <option>모라3동</option>
-                <option>덕포1동</option>
-                <option>덕포2동</option>
-                <option>괘법동</option>
-                <option>감전동</option>
-                <option>주례1동</option>
-                <option>주례2동</option>
-                <option>주례3동</option>
-                <option>학장동</option>
-                <option>엄궁동</option>
-              </select>
-              <select name="SYd" class="ds" style="visibility:hidden;" disabled>
-                <option>남천1동</option>
-                <option>남천2동</option>
-                <option>수영동</option>
-                <option>망미1동</option>
-                <option>망미2동</option>
-                <option>광안1동</option>
-                <option>광안2동</option>
-                <option>광안3동</option>
-                <option>광안4동</option>
-                <option>민락동</option>
-              </select>
-              <select name="YDd" class="ds" style="visibility:hidden;" disabled>
-                <option>남항동</option>
-                <option>영선1동</option>
-                <option>영선2동</option>
-                <option>신선동</option>
-                <option>봉래1동</option>
-                <option>봉래2동</option>
-                <option>청학1동</option>
-                <option>청학2동</option>
-                <option>동삼1동</option>
-                <option>동삼2동</option>
-                <option>동삼3동</option>
-              </select>
-              <select name="YJd" class="ds" style="visibility:hidden;" disabled>
-                <option>거제1동</option>
-                <option>거제2동</option>
-                <option>거제3동</option>
-                <option>거제4동</option>
-                <option>연산1동</option>
-                <option>연산2동</option>
-                <option>연산3동</option>
-                <option>연산4동</option>
-                <option>연산5동</option>
-                <option>연산6동</option>
-                <option>연산8동</option>
-                <option>연산9동</option>
+
+        </div>
+        <div class="select-box-2">
+          <div class="polygon-wrapper">
+            <div class="slb">
+              <img class="img" src="../static/images/polygon-2.svg" />
+              <select id="gg" name="gg">
+                <option value="B">북구</option>
+                <option value="BJD">부산진구</option>
+                <option value="D">동구</option>
+                <option value="DN">동래구</option>
+                <option value="GIC">기장군</option>
+                <option value="GJ">금정구</option>
+                <option value="GS">강서구</option>
+                <option value="HD">해운대구</option>
+                <option value="J">중구</option>
+                <option value="N">남구</option>
+                <option value="S">서구</option>
+                <option value="SH">사하구</option>
+                <option value="SS">사상구</option>
+                <option value="SY">수영구</option>
+                <option value="YD">영도구</option>
+                <option value="YJ">연제구</option>
               </select>
             </div>
-            
-          </div>
-          <div class="select-box-2">
-            <div class="polygon-wrapper">
-              <div class="slb">
-                <img class="img" src="../static/images/polygon-2.svg" />
-                <select id="gg" name="gg">
-                  <option value="B">북구</option>
-                  <option value="BJD">부산진구</option>
-                  <option value="D">동구</option>
-                  <option value="DN">동래구</option>
-                  <option value="GIC">기장군</option>
-                  <option value="GJ">금정구</option>
-                  <option value="GS">강서구</option>
-                  <option value="HD">해운대구</option>
-                  <option value="J">중구</option>
-                  <option value="N">남구</option>
-                  <option value="S">서구</option>
-                  <option value="SH">사하구</option>
-                  <option value="SS">사상구</option>
-                  <option value="SY">수영구</option>
-                  <option value="YD">영도구</option>
-                  <option value="YJ">연제구</option>
-                </select>
-              </div>
-            </div><!--셀렉트박스-->
-            <div class="text-wrapper-6">군/구</div>
-          </div>
-          <input name="dong" style="display: none;">
-        </form>
-        <img class="line" src="../static/images/line.svg"/>
-        <div class="main-title">(Intro Page)</div>
-        <div class="introduce"></div>
-      </div>
+          </div><!--셀렉트박스-->
+          <div class="text-wrapper-6">군/구</div>
+        </div>
+        <input name="gu" style="display:none">
+        <input name="dong" style="display: none;">
+      </form>
+      <img class="line" src="../static/images/line.svg" />
+      <div class="main-title">(Intro Page)</div>
+      <div class="introduce"></div>
     </div>
-  </body>
-  <script>
-    // JavaScript 코드 추가
-    const img = document.querySelector('.img');
-    const img2 = document.querySelector('.img2');
-    const selectBoxes = document.querySelectorAll('.ds, #gg');
+  </div>
+</body>
+<script>
+  // JavaScript 코드 추가
+  const img = document.querySelector('.img');
+  const img2 = document.querySelector('.img2');
+  const selectBoxes = document.querySelectorAll('.ds, #gg');
 
-    selectBoxes.forEach(selectBox => {
-      selectBox.addEventListener('blur', () => {
-        if (selectBox.classList.contains('ds')) {
-          img2.style.transform = 'none';
-        } else {
-          img.style.transform = 'none';
-        }
-      });
-
-      selectBox.addEventListener('focus', () => {
-        if (selectBox.classList.contains('ds')) {
-          img2.style.transform = 'rotate(180deg)';
-        } else {
-          img.style.transform = 'rotate(180deg)';
-        }
-      });
-
-      selectBox.addEventListener('change', () => {
-        selectBox.blur(); // 선택 후 포커스 취소
-      });
+  selectBoxes.forEach(selectBox => {
+    selectBox.addEventListener('blur', () => {
+      if (selectBox.classList.contains('ds')) {
+        img2.style.transform = 'none';
+      } else {
+        img.style.transform = 'none';
+      }
     });
-  </script><!--화살표 회전script-->
-  <script>
-    function disableSelect(a) {
-      const selectElement = a;
-      selectElement.disabled = true; // select 요소를 비활성화
-    }
-    function enableSelect(a) {
+
+    selectBox.addEventListener('focus', () => {
+      if (selectBox.classList.contains('ds')) {
+        img2.style.transform = 'rotate(180deg)';
+      } else {
+        img.style.transform = 'rotate(180deg)';
+      }
+    });
+
+    selectBox.addEventListener('change', () => {
+      selectBox.blur(); // 선택 후 포커스 취소
+    });
+  });
+</script><!--화살표 회전script-->
+<script>
+  function disableSelect(a) {
+    const selectElement = a;
+    selectElement.disabled = true; // select 요소를 비활성화
+  }
+  function enableSelect(a) {
     const selectElement = a;
     selectElement.disabled = false; // select 요소를 활성화
   }
+  document.getElementById('gg').addEventListener('change', function () {
+    const value = this.value; // 선택한 값 가져오기
+    // 숨겨진 필드에 구의 값을 설정
+    const guField = document.querySelector('input[name="gu"]');
+    if (guField) {
+      selectbox = document.getElementById('gg')
+      guField.value = selectbox.options[selectbox.selectedIndex].text;
+      console.log(guField.value)
+    }
 
-
-    document.getElementById('gg').addEventListener('change', function() {
-      const value = this.value; // 선택한 값 가져오기
-  
-      // 모든 클래스를 숨김 처리
-      const allClasses = document.querySelectorAll('.ds');
-      allClasses.forEach(element => {
-        disableSelect(element);
-        element.style.visibility = 'hidden';
-      });
-  
-      // 선택한 값을 가진 클래스만 보이게 처리
-      const selectedClass = document.querySelector(`select[name="${value}d"]`);
-      if (selectedClass) {
-        enableSelect(selectedClass);
-        selectedClass.style.visibility = 'visible';
-      }
+    // 모든 클래스를 숨김 처리
+    const allClasses = document.querySelectorAll('.ds');
+    allClasses.forEach(element => {
+      disableSelect(element);
+      element.style.visibility = 'hidden';
     });
-  </script><!--동/읍/면 시각화script-->
-  <script>
-    document.getElementById('confirmButton').addEventListener('click', function() {
-      const ggSelect = document.getElementById('gg');
-      const value = ggSelect.value;
-      const selectedClass = document.querySelector(`select[name="${value}d"]`);
 
+    // 선택한 값을 가진 클래스만 보이게 처리
+    const selectedClass = document.querySelector(`select[name="${value}d"]`);
+    if (selectedClass) {
+      enableSelect(selectedClass);
+      selectedClass.style.visibility = 'visible';
+
+      // form의 'dong' 필드에 선택된 값 설정
+      const dongField = document.querySelector('input[name="dong"]');
+      if (dongField) {
+        const selectedOption = selectedClass.value;
+        dongField.value = selectedOption;
+      }
+    }
+  });
+  const dsSelectElements = document.querySelectorAll('.ds');
+
+  // 각 select 요소에 대해 이벤트 리스너 추가
+  dsSelectElements.forEach(selectElement => {
+    selectElement.addEventListener('change', () => {
+      // 선택된 옵션의 값을 콘솔에 출력
+      console.log(selectElement.value);
+      // name이 'dong'인 input 요소 찾기
       const dongInput = document.querySelector('input[name="dong"]');
 
-      if (ggSelect && selectedClass) {
-        dongInput.value = selectedClass.value;
-        ggSelect.disabled = true; // gg select 요소를 비활성화
-        selectedClass.disabled = true; // 선택된 select 요소를 비활성화
+      // input 요소의 value를 현재 선택된 select 요소의 value로 설정
+      if (dongInput) {
+        dongInput.value = selectElement.value;
       }
     });
-  
+  });
 </script><!--동/읍/면 시각화script-->
 <script>
   document.getElementById('confirmButton').addEventListener('click', function () {
-    const ggSelect = document.getElementById('gg');
+    var ggSelect = document.getElementById('gg');
     const value = ggSelect.value;
     const selectedClass = document.querySelector(`select[name="${value}d"]`);
 
@@ -618,8 +389,9 @@
 
     const guField = document.querySelector('input[name="gu"]');
     if (guField) {
-      //ggSelect = document.getElementById('gg') 
+      ggSelect = document.getElementById('gg') // selectbox -> ggSelect
       guField.value = ggSelect.options[ggSelect.selectedIndex].text;
+      //alert(guField.value);
       console.log(guField.value)
     }
 
@@ -631,6 +403,7 @@
     if (ggSelect && selectedClass) {
       //dongInput.value = selectedClass.value;
       ggSelect.disabled = true; // gg select 요소를 비활성화
+      //alert(selectedClass);
       selectedClass.disabled = true; // 선택된 select 요소를 비활성화
     }
   });
