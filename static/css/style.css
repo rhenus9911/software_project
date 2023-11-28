@@ -80,6 +80,7 @@
   height: 731px;
   top: 247px;
   left: 564px;
+  font-family: 'Nanum Gothic', sans-serif;
 }
 
 .mainpage .div-wrapper {
@@ -233,7 +234,7 @@
   width: 550px;
   top: 39px;
   left: 445px;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Nanum Gothic', sans-serif;
   font-weight: 400;
   color: #303e60;
   font-size: 93px;
@@ -293,4 +294,5 @@ td{
   top: 279px;
   left: 86px;
   color: #303e60;
+  font-family: 'Nanum Gothic', sans-serif;
 }
