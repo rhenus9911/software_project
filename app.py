@@ -28,7 +28,10 @@ def report():
                                 den_dict = trans_den,
                                 recommend = list(trans_den.items())[0][0],
                                 graph1 = sales_img,
-                                graph2 = density_img)
+                                graph2 = density_img,
+                                c_dict = card_dict,
+                                p_dict = pop_dict
+                                )
 
 # 프로그램 시작점
 if __name__ == '__main__':
