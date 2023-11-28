@@ -29,7 +29,7 @@
       </div>
       <div class="result-area">
         <div class="div-wrapper">
-          <div style="display:flex">
+          <div style="display:flex; padding:15px;">
             <table style="border-collapse: collapse; width:60%; border:1px black;">
               <tbody>
                   <tr>
@@ -49,7 +49,7 @@
             <img src="{{url_for ('static' , filename='images/'+graph1)}}" width="40%" />
           </div>
           
-          <div style="display:flex">
+          <div style="display:flex; padding:15px;">
             <table style="border-collapse: collapse; width:60%; border:1px black;">
               <tbody>
                   <tr>
@@ -69,7 +69,7 @@
             <img src="{{url_for ('static' , filename='images/'+graph2)}}" width="40%" />
           </div>
 
-          <div style="display:flex">
+          <div style="display:flex; height:150px; padding:15px">
             <table style="border-collapse: collapse; width:50%; border:1px black;">
               <tbody>
                   <tr>
@@ -77,15 +77,14 @@
                     <td style="width: 10%; text-align: center;">이용 금액(단위: 원)</td>                            
                     </td>
                 </tr>
-                    
+                {% for a, b in c_dict.items() %}
                 <tr>
-                    {% for a, b in c_dict.items() %}
                     {% if loop.index not in [1, 2] %}
                     <td style="width: 10%; text-align: center;">{{a}}</td>
                     <td style="width: 10%; text-align: center;">{{b}}</td>
                     {% endif %}
-                    {% endfor %}
                 </tr>
+                {% endfor %}
               </tbody>
             </table>
             <table style="border-collapse: collapse; width:50%; border:1px black;">
