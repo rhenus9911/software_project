@@ -13,7 +13,7 @@
     <div class="div">
       <div class="map-area">
         <div class="overlap-group">
-          <div class="text-wrapper" style="display: none;">(지도영역)</div>
+          <!--<div class="text-wrapper" style="display: none;">(지도영역)</div>-->
           <iframe style="margin-top:7px; margin-left:-5px;" src="{{url_for('static', filename='QGIS/index.html')}}"
             width="470" height="420"></iframe>
           <!--<iframe style="margin-top:7px; margin-left:-5px;" src="/QGIS/index.html" width="470" height="420"></iframe>-->
@@ -32,7 +32,7 @@
       <div class="result-area">
         <div class="div-wrapper">
           <div style="display:flex; padding:15px;">
-            <table style="border-collapse: collapse; width:60%; border:1px black;">
+            <table style="border-collapse: collapse; width:60%;">
               <tbody>
                   <tr>
                       <td style="width: 10%; text-align: center;">업종 - 매출액</td>
@@ -52,7 +52,7 @@
           </div>
           
           <div style="display:flex; padding:15px;">
-            <table style="border-collapse: collapse; width:60%; border:1px black;">
+            <table style="border-collapse: collapse; width:60%;">
               <tbody>
                   <tr>
                       <td style="width: 10%; text-align: center;">업종 - 밀집도</td>
@@ -72,7 +72,7 @@
           </div>
 
           <div style="display:flex; height:150px; padding:15px">
-            <table style="border-collapse: collapse; width:50%; border:1px black;">
+            <table style="border-collapse: collapse; width:50%;">
               <tbody>
                   <tr>
                     <td style="width: 10%; text-align: center;">카드 매출 정보</td>
@@ -89,7 +89,7 @@
                 {% endfor %}
               </tbody>
             </table>
-            <table style="border-collapse: collapse; width:50%; border:1px black;">
+            <table style="border-collapse: collapse; width:50%;">
               <tbody>
                   <tr>
                     <td style="width: 10%; text-align: center;">유동 인구 정보</td>
