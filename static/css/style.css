@@ -1,5 +1,12 @@
+@font-face {
+  font-family: 'PyeongChangPeace-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 .mainpage {
-  background-color: #ffeee3;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -7,7 +14,7 @@
 }
 
 .mainpage .div {
-  background-color: #ffeee3;
+  background-color: #ffffff;
   width: 1440px;
   height: 1024px;
   position: relative;
@@ -25,7 +32,7 @@
   position: relative;
   width: 484px;
   height: 439px;
-  background-color: #ffe6e6;
+  background-color: #cdeaec;
   border-radius: 20px;
   text-align: center;
 }
@@ -37,7 +44,7 @@
   color: #3f1606;
   font-size: 40px;
   position: absolute;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Nanum Gothic', sans-serif;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
@@ -80,13 +87,14 @@
   height: 731px;
   top: 247px;
   left: 564px;
+  font-family: 'Nanum Gothic', sans-serif;
 }
 
 .mainpage .div-wrapper {
   position: relative;
   width: 838px;
   height: 731px;
-  background-color: #fdd2b9;
+  background-color: #cdeaec;
   border-radius: 20px;
   text-align:center;
   padding:15px;
@@ -220,20 +228,22 @@
 .mainpage .line {
   position: absolute;
   width: 1381px;
-  height: 1px;
+  height: 12px;
   top: 194px;
   left: 29px;
   object-fit: cover;
+  background-color:#303e60;
+  border-radius:15px;
 }
 
 .mainpage .main-title {
   position: absolute;
-  width: 550px;
+  width: 600px;
   top: 39px;
   left: 445px;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'PyeongChangPeace-Bold', sans-serif;
   font-weight: 400;
-  color: #3f1606;
+  color: #303e60;
   font-size: 93px;
   letter-spacing: 0;
   line-height: normal;
@@ -280,4 +290,20 @@ option{
 td{
   vertical-align: middle;
   
+}
+
+.mainpage #location-area {
+  border-radius:15px; 
+  border-width:0px; 
+  position: absolute;
+  width: 412px;
+  height: 208px;
+  top: 279px;
+  left: 86px;
+  color: #303e60;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+td{
+  border:1px solid #000000;
 }
