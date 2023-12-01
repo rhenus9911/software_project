@@ -26,7 +26,7 @@ def report():
                                 dong = str(dong),
                                 sales_dict = trans_sales,
                                 den_dict = trans_den,
-                                recommend = list(trans_den.items())[0][0],
+                                recommend = None,
                                 graph1 = sales_img,
                                 graph2 = density_img,
                                 c_dict = card_dict,
