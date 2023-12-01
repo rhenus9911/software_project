@@ -287,10 +287,6 @@ option{
   box-shadow: 0px 4px 4px #00000040;
 }
 
-td{
-  vertical-align: middle;
-  
-}
 
 .mainpage #location-area {
   border-radius:15px; 
@@ -305,5 +301,12 @@ td{
 }
 
 td{
-  border:1px solid #000000;
+  border:2px solid #303e60;
+  vertical-align: middle;
+}
+
+th{
+  border:2px solid #303e60;
+  background-color: #89c8ce;
+  vertical-align: middle;
 }

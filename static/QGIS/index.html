@@ -262,7 +262,7 @@
             "연산6동": [35.177485, 129.08965],
             "연산7동": [35.173343, 129.094216],
             "연산8동": [35.187129, 129.101029],
-            "연산9동": [35.185919, 129.109383], 
+            "연산9동": [35.185919, 129.109383],
         };
 
     </script>
@@ -272,8 +272,8 @@
     <script>
         var map = L.map('map', {
             zoomControl: true, maxZoom: 28, minZoom: 1
-        }).fitBounds([[35.18748915186646,128.9776273914972],[35.21286823578244,129.03709881175413]])
-        
+        }).setView([35.1795543, 129.0756416], 11)
+
 
         //전체화면 기능 추가
         map.addControl(new L.Control.Fullscreen());
@@ -1343,26 +1343,43 @@
     </script>
     <!-- 이벤트 처리-->
     <script>
+        var layer__result
         window.addEventListener('message', function (event) {
             let [g, d, recommend] = event.data
+            console.log(g, d, recommend)
             //기존에 필터링 된 레이어가 있었다면 제거
-            if (bounds_group.hasLayer(layer__result)) {
-                layerControl.removeLayer(layer__result)
-                bounds_group.removeLayer(layer__result)
+            if (map.hasLayer(layer__result)) {
+                if (bounds_group.hasLayer(layer__result)) {
+                    bounds_group.removeLayer(layer__result);
+                    if (!bounds_group.hasLayer(layer__result)) {
+                        console.log("레이어가 bounds_group에서 성공적으로 제거되었습니다.");
+                    } else {
+                        console.log("레이어가 여전히 bounds_group에 존재합니다.");
+                    }
+                }
+                map.removeLayer(layer__result);
+                if (!map.hasLayer(layer__result)) {
+                    console.log("레이어가 성공적으로 제거되었습니다.");
+                } else {
+                    console.log("레이어가 여전히 지도에 존재합니다.");
+                }
+                layer__result = L.geoJson()
+                console.log("if end")
             }
             // 필터링 하는 부분
-            var original_data = gu[g]
-            console.log(g, d, recommend)
-            var filteredData = {
-                ...original_data,
-                features: original_data.features.filter(function (feature) {
-                    return feature.properties.행정동명.includes(d) && feature.properties.상권업종소분류명 === recommend;
-                })
-            }
-            console.log(filteredData)
-            // 필터링된 데이터를 토대로 layer 만듦
-            function pop__result(feature, layer) {
-                var popupContent = '<table>\
+            if (recommend != 'None') {
+                var original_data = gu[g]
+                console.log(g, d, recommend)
+                var filteredData = {
+                    ...original_data,
+                    features: original_data.features.filter(function (feature) {
+                        return feature.properties.행정동명.includes(d) && feature.properties.상권업종소분류명 === recommend;
+                    })
+                }
+                console.log(filteredData)
+                // 필터링된 데이터를 토대로 layer 만듦
+                function pop__result(feature, layer) {
+                    var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['행정동명'] !== null ? autolinker.link(feature.properties['행정동명'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -1388,48 +1405,48 @@
                         <td colspan="2">' + (feature.properties['위도'] !== null ? autolinker.link(feature.properties['위도'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-                layer.bindPopup(popupContent, { maxHeight: 400 });
-            }
-            function style__result() {
-                return {
-                    pane: 'pane__result',
-                    radius: 4.0,
-                    opacity: 1,
-                    color: 'rgba(0, 0, 0, 1)',
-                    dashArray: '',
-                    lineCap: 'butt',
-                    lineJoin: 'miter',
-                    weight: 1,
-                    fill: true,
-                    fillOpacity: 1,
-                    fillColor: 'rgba(0,0,255,1)',
-                    interactive: true,
+                    layer.bindPopup(popupContent, { maxHeight: 400 });
                 }
+                function style__result() {
+                    return {
+                        pane: 'pane__result',
+                        radius: 4.0,
+                        opacity: 1,
+                        color: 'rgba(0, 0, 0, 1)',
+                        dashArray: '',
+                        lineCap: 'butt',
+                        lineJoin: 'miter',
+                        weight: 1,
+                        fill: true,
+                        fillOpacity: 1,
+                        fillColor: 'rgba(0,0,255,1)',
+                        interactive: true,
+                    }
+                }
+                map.createPane('pane__result');
+                map.getPane('pane__result').style.zIndex = 401;
+                map.getPane('pane__result').style['mix-blend-mode'] = 'normal';
+                layer__result = new L.geoJson(filteredData, {
+                    attribution: '',
+                    interactive: true,
+                    dataVar: 'filteredData',
+                    layerName: 'layer__result',
+                    pane: 'pane__result',
+                    onEachFeature: pop__result,
+                    pointToLayer: function (feature, latlng) {
+                        var context = {
+                            feature: feature,
+                            variables: {}
+                        };
+                        return L.circleMarker(latlng, style__result(feature));
+                    },
+                });
+                map.addLayer(layer__result)
+                bounds_group.addLayer(layer__result);
+                //layerControl.addOverlay({ '<img src="legend/_10.png" /> 결과': layer__result })
+                // 선택된 동으로 지도 이동
             }
-            map.createPane('pane__result');
-            map.getPane('pane__result').style.zIndex = 401;
-            map.getPane('pane__result').style['mix-blend-mode'] = 'normal';
-            var layer__result = new L.geoJson(filteredData, {
-                attribution: '',
-                interactive: true,
-                dataVar: 'filteredData',
-                layerName: 'layer__result',
-                pane: 'pane__result',
-                onEachFeature: pop__result,
-                pointToLayer: function (feature, latlng) {
-                    var context = {
-                        feature: feature,
-                        variables: {}
-                    };
-                    return L.circleMarker(latlng, style__result(feature));
-                },
-            });
-            bounds_group.addLayer(layer__result);
-            map.addLayer(layer__result)
-            //layerControl.addOverlay({ '<img src="legend/_10.png" /> 결과': layer__result })
-            // 선택된 동으로 지도 이동
             dongCoordinate = busanDongCoordinates[d]
-            console.log(dongCoordinate)
             map.setView(dongCoordinate, 14)
         })
 
