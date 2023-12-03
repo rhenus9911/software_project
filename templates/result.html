@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="../static/css/globals.css" />
+  <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
+<body>
+  <div class="mainpage">
+    <div class="div">
+      <div class="map-area">
+        <div class="overlap-group">
+          <!--<div class="text-wrapper" style="display: none;">(지도영역)</div>-->
+          <iframe style="margin-top:7px; margin-left:-5px;" src="{{url_for('static', filename='QGIS/index.html')}}"
+            width="470" height="420"></iframe>
+          <!--<iframe style="margin-top:7px; margin-left:-5px;" src="/QGIS/index.html" width="470" height="420"></iframe>-->
+          <script>
+            window.onload = function(){
+            var gu = "{{ gu }}"
+            var dong = "{{ dong }}"
+            var recommend = "{{ recommend }}"
+            //console.log(gu, dong, recommend)
+            const iframeWindow = document.querySelector('iframe').contentWindow;
+            iframeWindow.postMessage([gu, dong, recommend], "*");
+
+            var items = document.querySelectorAll('.item');
+              items.forEach(item => {
+                item.addEventListener('click', () => {
+                  recommend = item.textContent;
+                  //alert(gu);
+                  //alert(dong);
+                  //alert(recommend);
+                  iframeWindow.postMessage([gu, dong, recommend], "*");
+                });
+              });
+
+            var dens = document.querySelectorAll('.den');
+              dens.forEach(item => {
+                item.addEventListener('click', () => {
+                  recommend = item.textContent;
+                  //alert(gu);
+                  //alert(dong);
+                  //alert(recommend);
+                  iframeWindow.postMessage([gu, dong, recommend], "*");
+                });
+              });
+            }
+          </script>
+        </div>
+      </div>
+      <div class="result-area">
+        <div class="div-wrapper">
+          <div style="display:flex; padding:15px;">
+            <table style="border-collapse: collapse; width:60%;">
+              <tbody>
+                  <tr>
+                      <th style="width: 10%; text-align: center;">업종 - 매출액</td>
+                      <th style="width: 10%; text-align: center;">평균 매출 금액(단위: 원)</td>
+                      <td style="width: 10%; text-align: center; height: auto;" rowspan="6"></td>
+                      </td>
+                  </tr>
+                    {% for x, y in sales_dict.items() %}
+                  <tr>
+                      <td class="item" style="width: 10%; text-align: center; cursor: pointer;">{{x}}</td>
+                      <td style="width: 10%; text-align: center;">{{y}}</td>
+                      {% endfor %}
+                  </tr>
+                  
+              </tbody>
+            </table>
+            <img src="{{url_for ('static' , filename='images/'+graph1)}}" width="40%" />
+          </div>
+          
+          <div style="display:flex; padding:15px;">
+            <table style="border-collapse: collapse; width:60%;">
+              <tbody>
+                  <tr>
+                      <th style="width: 10%; text-align: center;">업종 - 밀집도</td>
+                      <th style="width: 10%; text-align: center;">평균 매출 금액(단위: 원)</td>                            
+                      </td>
+                      <td style="width: 10%; text-align: center; height: auto;" id="roadview" rowspan="6"></td>
+                  </tr>
+                      {% for a, b in den_dict.items() %}
+                  <tr>
+                      <td class="den" style="width: 10%; text-align: center; cursor: pointer;">{{a}}</td>
+                      <td style="width: 10%; text-align: center;">{{b}}</td>
+                      {% endfor %}
+                  </tr>
+                  
+              </tbody>
+            </table>
+            <img src="{{url_for ('static' , filename='images/'+graph2)}}" width="40%" />
+          </div>
+
+          <div style="display:flex; height:150px; padding:15px">
+            <table style="border-collapse: collapse; width:50%;">
+              <tbody>
+                  <tr>
+                    <th style="width: 10%; text-align: center;">카드 매출 정보</td>
+                    <th style="width: 10%; text-align: center;">이용 금액(단위: 원)</td>                            
+                    </td>
+                </tr>
+                {% for a, b in c_dict.items() %}
+                <tr>
+                    {% if loop.index not in [1, 2] %}
+                    <td style="width: 10%; text-align: center;">{{a}}</td>
+                    <td style="width: 10%; text-align: center;">{{b}}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <table style="border-collapse: collapse; width:50%;">
+              <tbody>
+                  <tr>
+                    <th style="width: 10%; text-align: center;">유동 인구 정보</td>
+                    <th style="width: 10%; text-align: center;">거주자 인구(단위: 명)</td>                            
+                    </td>
+                </tr>
+                    {% for a, b in p_dict.items() %}
+                <tr>
+                    <td style="width: 10%; text-align: center;">{{a}}</td>
+                    <td style="width: 10%; text-align: center;">{{b}}</td>
+                      
+                    {% endfor %}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+      <div id="location-area">
+        <div style="font-size:40px; text-align:center">선택된 구역</div>
+        <br>
+        <div style="font-size:45px">구/군 : {{gu}} </div>
+        <br>
+        <div style="font-size:45px">동/읍/면 : {{dong}} </div>
+      </div>
+      <img class="line"/>
+      <div class="main-title" style="left:550px;">분석 결과</div>
+    </div>
+
+  </div>
+</body>
+
+</html>
