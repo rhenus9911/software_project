@@ -1,5 +1,12 @@
+@font-face {
+  font-family: 'PyeongChangPeace-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 .intro {
-  background-color: #ffeee3;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -7,7 +14,7 @@
 }
 
 .intro .div {
-  background-color: #ffeee3;
+  background-color: #ffffff;
   width: 1440px;
   height: 1024px;
   position: relative;
@@ -25,7 +32,7 @@
   position: relative;
   width: 483px;
   height: 55px;
-  background-color: #f8deb8;
+  background-color: #cdeaec;
   border-radius: 15px;
 }
 
@@ -35,9 +42,9 @@
   left: 186px;
   text-align: center;
   position: absolute;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Nanum Gothic', sans-serif;
   font-weight: 400;
-  color: #3f1606;
+  color: #303e60;
   font-size: 26px;
   letter-spacing: 0;
   line-height: normal;
@@ -57,9 +64,9 @@
   top: 0;
   left: 7px;
   position: absolute;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Nanum Gothic', sans-serif;
   font-weight: 400;
-  color: #3f1606;
+  color: #303e60;
   font-size: 26px;
   letter-spacing: 0;
   line-height: normal;
@@ -72,7 +79,7 @@
   height: 49px;
   top: 39px;
   left: 0;
-  background-color: #f8deb8;
+  background-color: #cdeaec;
   border-radius: 25px;
 }
 
@@ -98,7 +105,7 @@
   height: 49px;
   top: 36px;
   left: 0;
-  background-color: #f8deb8;
+  background-color: #cdeaec;
   border-radius: 25px;
 }
 
@@ -115,9 +122,9 @@
   top: 0;
   left: 7px;
   position: absolute;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Nanum Gothic', sans-serif;
   font-weight: 400;
-  color: #3f1606;
+  color: #303e60;
   font-size: 26px;
   letter-spacing: 0;
   line-height: normal;
@@ -127,20 +134,22 @@
 .intro .line {
   position: absolute;
   width: 1381px;
-  height: 1px;
+  height: 15px;
   top: 194px;
   left: 29px;
   object-fit: cover;
+  background-color:#303e60;
+  border-radius:15px;
 }
 
 .intro .main-title {
   position: absolute;
-  width: 550px;
+  width: 1300px;
   top: 39px;
-  left: 445px;
-  font-family: "Inter-Regular", Helvetica;
+  left: 80px;
+  font-family: 'PyeongChangPeace-Bold';
   font-weight: 400;
-  color: #3f1606;
+  color: #303e60;
   font-size: 93px;
   letter-spacing: 0;
   line-height: normal;
@@ -165,6 +174,8 @@ select{
   border: none;
   text-align : center;
   font-size : 30px;
+  outline: none;
+  color:#303e60;
 }
 
 .ds, #gg{
@@ -175,7 +186,8 @@ select{
 }
 
 option{
-  background-color: #f8deb8;
+  background-color: #cdeaec;
+  color:#303e60;
 }
 
 button{

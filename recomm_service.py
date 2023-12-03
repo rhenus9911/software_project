@@ -182,6 +182,8 @@ def foodRecommand(dong):
       position_sales_dict = dict([(x, int(y)) for x, y in zip(sales['상권업종소분류코드'], sales['매출'])])
       sales_dict = merge_two_dicts(sales_dict, position_sales_dict)
       # print(sales_dict)
+  
+  sales_dict = dict(sorted(sales_dict.items(), key=lambda x:x[1], reverse=True))
 
   den_dict = {}  # 밀집도 top5 결과 dict
   for i in den:
@@ -190,6 +192,8 @@ def foodRecommand(dong):
 
       position_sales_dict = dict([(x, int(y)) for x, y in zip(den['상권업종소분류코드'], den['매출'])])
       den_dict = merge_two_dicts(den_dict, position_sales_dict)
+  
+  den_dict = dict(sorted(den_dict.items(), key=lambda x:x[1], reverse=True))
 
   sd = {}
   dd = {}

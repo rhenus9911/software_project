@@ -8,7 +8,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/report', methods=['GET', 'POST'])
+@app.route('/result', methods=['GET', 'POST'])
 def report():
     if request.method == 'GET':
         return redirect('/')
@@ -21,12 +21,12 @@ def report():
         else:
             return redirect('/')
 
-        return render_template('report.html',
+        return render_template('result.html',
                                 gu = str(gu),
                                 dong = str(dong),
                                 sales_dict = trans_sales,
                                 den_dict = trans_den,
-                                recommend = list(trans_den.items())[0][0],
+                                recommend = None,
                                 graph1 = sales_img,
                                 graph2 = density_img,
                                 c_dict = card_dict,
